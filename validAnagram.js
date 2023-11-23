@@ -17,3 +17,23 @@ var isAnagram = function(s, t) {
   newT = t.split('').sort().toString()
   if (newS == newT) {return true} else {return false}
 };
+
+
+// Attempting O(n) runtime
+// Incomplete
+const isHashAnagram = (s,t) => {
+  let sHashMap = {}
+  let tHashMap = {}
+  let newS = s.split('')
+  let newT = t.split('')
+  newS.map((letter)=>{
+    if (sHashMap[letter]) {sHashMap[letter]++} else {sHashMap[letter] = 1}
+  })
+  newT.map((letter)=>{
+    if (tHashMap[letter]) {tHashMap[letter]++} else {tHashMap[letter] = 1}
+  })
+  Object.keys(sHashMap).map((letterKey)=>{
+    if (sHashMap[letterKey] != tHashMap[letterKey]) {return false}
+  })
+  return true
+}
