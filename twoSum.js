@@ -16,3 +16,18 @@ var twoSum = function(nums, target) {
         }
     }
 }
+
+
+// Behold the beautiful O(n) single pass function!
+const twoSum = (nums, target) => {
+  let hashMap = {};
+  for (let i = 0; i < nums.length; i++){
+    let elem = nums[i];
+    let product = target - elem;
+    if (hashMap[product] !== undefined && hashMap[product] !== i) {
+      console.log("we made it: ", [i , hashMap[product]]);
+      return [i , hashMap[product]];
+    }
+    hashMap[elem] = i;
+  }
+}
